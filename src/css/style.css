@@ -46,6 +46,21 @@
     border-left: 1px solid #aaa;
     flex: 1;
   }
+
+  .btn-close {
+    padding: 7px;
+    background-color: red;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn-close:hover {
+    background-color: black;
+    color:red;
+  }
    
   .contact-item-title {
     padding: 4px 0;
