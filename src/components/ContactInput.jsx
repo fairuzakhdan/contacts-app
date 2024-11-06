@@ -1,8 +1,12 @@
 import React from "react";
+import { getData } from "../utils/data";
 
 class ContactInput extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            contacts: getData()
+        }
     }
   render() {
     return (
