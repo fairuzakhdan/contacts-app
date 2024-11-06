@@ -1,6 +1,7 @@
 import React from "react";
 import { getData } from "../utils/data";
 import ContactList from "./ContactList";
+import ContactInput from "./ContactInput";
 
 
 class ContactApp extends React.Component {
@@ -9,16 +10,35 @@ class ContactApp extends React.Component {
     this.state = {
       contacts: getData()
     }
-    this.onDeletedEventListener = this.onDeletedEventListener.bind(this)
+    this.onDeletedEventListener = this.onDeletedEventListener.bind(this);
+    this.onAddContactHandler = this.onAddContactHandler.bind(this)
   }
   onDeletedEventListener(id) {
     const contacts = this.state.contacts.filter((contact) => contact.id !== id);
     this.setState({contacts})
   }
+
+  onAddContactHandler({name,tag}) {
+    this.setState((prevState) => {
+      return {
+        contacts: [
+          ...prevState.contacts,
+          {
+            id: Math.floor(Math.random()*1000),
+            name,
+            tag,
+            url: 'public/assets/images/arifaizin.jpeg'
+          }
+        ]
+      }
+    })
+
+  }
   render() {
    
     return (
       <div className="contact-app">
+        <ContactInput addContact={this.onAddContactHandler}/>
       <h1>Daftar Kontak</h1>
       <ContactList contacts={this.state.contacts} onDelete={this.onDeletedEventListener}/>
     </div>

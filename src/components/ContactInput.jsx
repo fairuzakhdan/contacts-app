@@ -5,30 +5,37 @@ class ContactInput extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            contacts: getData()
+            name: '',
+            tag: ''
         }
         this.addNameInput = this.addNameInput.bind(this)
         this.addTagInput = this.addTagInput.bind(this)
+        this.onSubmitHandler = this.onSubmitHandler.bind(this)
     }
     addNameInput(event) {
         this.setState(() => {
             return {
-                contacts: event.target.value
+                name: event.target.value
             }
         })
     }
     addTagInput(event) {
         this.setState(() => {
             return {
-                contacts: event.target.value
+                tag: event.target.value
             }
         })
     }
+
+    onSubmitHandler(event) {
+        event.preventDefault();
+        this.props.addContact(this.state)
+    }
   render() {
     return (
-      <form action="">
-        <input type="text" placeholder="Input Name" value={} onChange={this.addNameInput}/>
-        <input type="text" placeholder="Input Tag" onChange={this.addTagInput}/>
+      <form action="" onSubmit={this.onSubmitHandler}>
+        <input type="text" placeholder="Input Name" value={this.state.name} onChange={this.addNameInput}/>
+        <input type="text" placeholder="Input Tag" value={this.state.tag} onChange={this.addTagInput}/>
         <button type="submit">Tambah</button>
       </form>
     );
