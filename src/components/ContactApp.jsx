@@ -38,6 +38,8 @@ class ContactApp extends React.Component {
    
     return (
       <div className="contact-app">
+         <h1>Aplikasi Kontak</h1>
+         <h2>Tambah Kontak</h2>
         <ContactInput addContact={this.onAddContactHandler}/>
       <h1>Daftar Kontak</h1>
       <ContactList contacts={this.state.contacts} onDelete={this.onDeletedEventListener}/>
